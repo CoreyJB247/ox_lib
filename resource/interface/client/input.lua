@@ -55,6 +55,8 @@ function lib.inputDialog(heading, rows, options)
             or row
     end
 
+    -- Cancel any pending context close before the dialog owns NUI focus.
+    lib.hideContext()
     lib.setNuiFocus(false)
     SendNUIMessage({
         action = 'openDialog',

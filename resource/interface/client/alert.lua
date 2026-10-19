@@ -29,6 +29,8 @@ function lib.alertDialog(data, timeout)
     alertId = id
     alert = promise.new()
 
+    -- Cancel any pending context close before the dialog owns NUI focus.
+    lib.hideContext()
     lib.setNuiFocus(false)
     SendNUIMessage({
         action = 'sendAlert',
